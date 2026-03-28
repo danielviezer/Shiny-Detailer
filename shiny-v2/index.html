@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiny Detailer – Car Detail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#home" class="nav-brand">
+    <img src="logo.jpeg" alt="Shiny Detailer">
+  </a>
+  <button id="burger" aria-label="Menu">
+    <span></span><span></span>
+  </button>
+  <ul id="nav-menu">
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#pacotes">Pacotes</a></li>
+    <li><a href="#galeria">Galeria</a></li>
+    <li><a href="#agendar" class="nav-btn">Agendar</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-img" style="background-image:url('img_ext1.jpeg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <span class="eyebrow">Car Detail · Itajaí, SC</span>
+    <h1>Seu carro.<br><em>Impecável.</em></h1>
+    <p>Detalhamento automotivo técnico e estético. Do básico ao premium.</p>
+    <div class="hero-btns">
+      <a href="#agendar" class="btn-main">Agendar agora</a>
+      <a href="#servicos" class="btn-line">Ver serviços</a>
+    </div>
+  </div>
+  <div class="hero-arrow">↓</div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <span class="tag">O que fazemos</span>
+      <h2>Serviços</h2>
+    </div>
+
+    <!-- Externo -->
+    <div class="cat-label fade-up">Tratamento Externo</div>
+    <div class="cards fade-up">
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_ext1.jpeg')">
+          <span class="card-price">a partir de R$120</span>
+        </div>
+        <div class="card-info">
+          <h3>Lavagem Técnica</h3>
+          <p>Lavagem interna e externa completa com aplicação de proteção na pintura.</p>
+          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_extra2.jpeg')">
+          <span class="card-price">a partir de R$225</span>
+        </div>
+        <div class="card-info">
+          <h3>Lavagem Detalhada</h3>
+          <p>Máxima atenção a todos os detalhes do veículo, por dentro e por fora.</p>
+          <div class="price-row">
+            <span>Hatch R$225</span>
+            <span>Sedan R$235</span>
+            <span>SUV R$245</span>
+          </div>
+          <a href="#agendar" class="card-cta" data-service="Lavagem Detalhada">Agendar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pintura -->
+    <div class="cat-label fade-up">Tratamento de Pintura</div>
+    <div class="cards fade-up">
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_polish.jpeg')">
+          <span class="card-price">a partir de R$50</span>
+        </div>
+        <div class="card-info">
+          <h3>Descontaminação de Vidros</h3>
+          <p>Remove manchas de chuva ácida que não saem na lavagem comum.</p>
+          <a href="#agendar" class="card-cta" data-service="Descontaminação de Vidros">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_extra1.jpeg')">
+          <span class="card-price">a partir de R$320</span>
+        </div>
+        <div class="card-info">
+          <h3>Enceramento Técnico</h3>
+          <p>Cera Blend All in One Vonixx na máquina. Brilho absurdo na pintura.</p>
+          <a href="#agendar" class="card-cta" data-service="Enceramento Técnico">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_polish.jpeg')">
+          <span class="card-price">a partir de R$650</span>
+        </div>
+        <div class="card-info">
+          <h3>Polimento Comercial</h3>
+          <p>Remove riscos superficiais e eleva o brilho da pintura.</p>
+          <a href="#agendar" class="card-cta" data-service="Polimento Comercial">Agendar →</a>
+        </div>
+      </div>
+      <div class="card card--blue">
+        <div class="card-img" style="background-image:url('img_extra3.jpeg')">
+          <span class="card-price">a partir de R$1.250</span>
+          <span class="card-badge">Premium</span>
+        </div>
+        <div class="card-info">
+          <h3>Polimento Técnico + Vitrificação</h3>
+          <p>Corrige até 90% dos riscos. Vitrificação com durabilidade de 1 a 3 anos.</p>
+          <a href="#agendar" class="card-cta" data-service="Polimento Técnico + Vitrificação">Agendar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Interno -->
+    <div class="cat-label fade-up">Tratamento Interno</div>
+    <div class="cards fade-up">
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_int1.jpeg')">
+          <span class="card-price">a partir de R$350</span>
+        </div>
+        <div class="card-info">
+          <h3>Higienização de Bancos</h3>
+          <p>Remove manchas, ácaros e odores dos estofados de tecido ou couro.</p>
+          <a href="#agendar" class="card-cta" data-service="Higienização de Bancos">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_int2.jpeg')">
+          <span class="card-price">a partir de R$550</span>
+        </div>
+        <div class="card-info">
+          <h3>Higienização Completa</h3>
+          <p>Limpeza profunda de todo o interior: bancos, teto, tapetes e painel.</p>
+          <a href="#agendar" class="card-cta" data-service="Higienização Completa do Interior">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_int1.jpeg')">
+          <span class="card-price">a partir de R$150</span>
+        </div>
+        <div class="card-info">
+          <h3>Oxi-Sanitização</h3>
+          <p>Ozônio elimina bactérias, fungos, vírus e odores do interior.</p>
+          <a href="#agendar" class="card-cta" data-service="Oxi-Sanitização">Agendar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motor & Inferior -->
+    <div class="cat-label fade-up">Motor & Inferior</div>
+    <div class="cards fade-up">
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_motor.jpeg')">
+          <span class="card-price">a partir de R$200</span>
+        </div>
+        <div class="card-info">
+          <h3>Lavagem de Motor</h3>
+          <p>Remove óleo, poeira e resíduos sem danificar componentes elétricos.</p>
+          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica de Motor">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_motor.jpeg')">
+          <span class="card-price">a partir de R$250</span>
+        </div>
+        <div class="card-info">
+          <h3>Limpeza de Chassi</h3>
+          <p>Remove barro, graxa e sujeiras da parte inferior. Previne corrosão.</p>
+          <a href="#agendar" class="card-cta" data-service="Limpeza Técnica de Chassi">Agendar →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motos -->
+    <div class="cat-label fade-up">Motos</div>
+    <div class="cards fade-up">
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_moto.jpeg')">
+          <span class="card-price">a partir de R$70</span>
+        </div>
+        <div class="card-info">
+          <h3>Lavagem Técnica</h3>
+          <p>Limpeza completa sem danificar componentes sensíveis da moto.</p>
+          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica – Moto">Agendar →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img" style="background-image:url('img_moto.jpeg')">
+          <span class="card-price">a partir de R$130</span>
+        </div>
+        <div class="card-info">
+          <h3>Lavagem Detalhada</h3>
+          <p>Limpeza minuciosa em áreas difíceis, realçando o acabamento da moto.</p>
+          <a href="#agendar" class="card-cta" data-service="Lavagem Detalhada – Moto">Agendar →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACOTES -->
+<section id="pacotes" class="dark-sec">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <span class="tag">Combos especiais</span>
+      <h2>Pacotes</h2>
+    </div>
+    <div class="pacotes fade-up">
+
+      <div class="pacote">
+        <div class="pac-num">01</div>
+        <div class="pac-img" style="background-image:url('img_ext1.jpeg')"></div>
+        <div class="pac-body">
+          <h3>Puro-Sangue</h3>
+          <p>Lavagem detalhada + enceramento técnico + cristalização do para-brisa. Proteção e brilho no dia a dia.</p>
+          <div class="pac-price">A partir de <strong>R$300</strong></div>
+          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Puro-Sangue">Agendar</a>
+        </div>
+      </div>
+
+      <div class="pacote">
+        <div class="pac-num">02</div>
+        <div class="pac-img" style="background-image:url('img_int2.jpeg')"></div>
+        <div class="pac-body">
+          <h3>Higienização</h3>
+          <p>Higienização interna completa + limpeza detalhada. Interior limpo, sem odores, sensação de carro novo.</p>
+          <div class="pac-price">A partir de <strong>R$650</strong></div>
+          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Higienização">Agendar</a>
+        </div>
+      </div>
+
+      <div class="pacote pacote--dest">
+        <div class="pac-dest-label">Mais popular</div>
+        <div class="pac-num">03</div>
+        <div class="pac-img" style="background-image:url('img_extra3.jpeg')"></div>
+        <div class="pac-body">
+          <h3>Galo Cinza</h3>
+          <p>Higienização interna + enceramento técnico. Ideal para valorizar o carro na hora da venda.</p>
+          <div class="pac-price">A partir de <strong>R$700</strong></div>
+          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Galo Cinza">Agendar</a>
+        </div>
+      </div>
+
+      <div class="pacote">
+        <div class="pac-num">04</div>
+        <div class="pac-img" style="background-image:url('img_polish.jpeg')"></div>
+        <div class="pac-body">
+          <h3>Mustang</h3>
+          <p>Lavagem detalhada + polimento comercial + higienização + cristalização de vidros. Renovação total.</p>
+          <div class="pac-price">A partir de <strong>R$1.250</strong></div>
+          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Mustang">Agendar</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <span class="tag">Nosso trabalho</span>
+      <h2>Galeria</h2>
+    </div>
+  </div>
+  <div class="gallery fade-up">
+    <div class="g" style="background-image:url('img_ext1.jpeg')"></div>
+    <div class="g g-tall" style="background-image:url('img_acabamento.jpeg')"></div>
+    <div class="g" style="background-image:url('img_int2.jpeg')"></div>
+    <div class="g" style="background-image:url('img_moto.jpeg')"></div>
+    <div class="g g-wide" style="background-image:url('img_extra2.jpeg')"></div>
+    <div class="g" style="background-image:url('img_motor.jpeg')"></div>
+    <div class="g" style="background-image:url('img_polish.jpeg')"></div>
+    <div class="g" style="background-image:url('img_extra1.jpeg')"></div>
+    <div class="g" style="background-image:url('img_int1.jpeg')"></div>
+  </div>
+</section>
+
+<!-- AGENDAMENTO -->
+<section id="agendar" class="dark-sec">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <span class="tag">Rápido e fácil</span>
+      <h2>Agendar</h2>
+      <p class="sec-sub">Preencha abaixo e confirme direto no WhatsApp.</p>
+    </div>
+    <div class="booking fade-up">
+      <div class="booking-form">
+        <div class="field">
+          <label>Serviço</label>
+          <select id="f-service">
+            <option value="">Selecione o serviço</option>
+            <optgroup label="Tratamento Externo">
+              <option>Lavagem Técnica</option>
+              <option>Lavagem Detalhada</option>
+            </optgroup>
+            <optgroup label="Tratamento de Pintura">
+              <option>Descontaminação de Vidros</option>
+              <option>Enceramento Técnico</option>
+              <option>Polimento Comercial</option>
+              <option>Polimento Técnico + Vitrificação</option>
+            </optgroup>
+            <optgroup label="Tratamento Interno">
+              <option>Higienização de Bancos</option>
+              <option>Higienização Completa do Interior</option>
+              <option>Oxi-Sanitização</option>
+            </optgroup>
+            <optgroup label="Motor & Inferior">
+              <option>Lavagem Técnica de Motor</option>
+              <option>Limpeza Técnica de Chassi</option>
+            </optgroup>
+            <optgroup label="Motos">
+              <option>Lavagem Técnica – Moto</option>
+              <option>Lavagem Detalhada – Moto</option>
+            </optgroup>
+            <optgroup label="Pacotes">
+              <option>Pacote Puro-Sangue</option>
+              <option>Pacote Higienização</option>
+              <option>Pacote Galo Cinza</option>
+              <option>Pacote Mustang</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Data</label>
+            <input type="date" id="f-date">
+          </div>
+          <div class="field">
+            <label>Horário</label>
+            <select id="f-time">
+              <option value="">Selecione</option>
+              <option>08:00</option><option>09:00</option><option>10:00</option>
+              <option>11:00</option><option>13:00</option><option>14:00</option>
+              <option>15:00</option><option>16:00</option><option>17:00</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Tipo de veículo</label>
+          <select id="f-vehicle">
+            <option value="">Selecione</option>
+            <option>Hatch</option><option>Sedan</option><option>SUV</option>
+            <option>Moto</option><option>Outro</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Observações <small>(opcional)</small></label>
+          <textarea id="f-obs" placeholder="Ex: couro no interior, cor especial..."></textarea>
+        </div>
+        <button class="btn-wa" onclick="enviarWA()">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Confirmar via WhatsApp
+        </button>
+      </div>
+      <div class="booking-aside">
+        <div class="aside-card">
+          <span class="aside-icon">📍</span>
+          <div>
+            <strong>Localização</strong>
+            <p>Itajaí, SC</p>
+          </div>
+        </div>
+        <div class="aside-card">
+          <span class="aside-icon">⏰</span>
+          <div>
+            <strong>Atendimento</strong>
+            <p>Seg–Sáb · 08h às 18h</p>
+          </div>
+        </div>
+        <div class="aside-card">
+          <span class="aside-icon">📱</span>
+          <div>
+            <strong>WhatsApp</strong>
+            <p>(47) 9747-8717</p>
+          </div>
+        </div>
+        <a href="https://wa.me/5547997478717" target="_blank" class="btn-wa-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap footer-inner">
+    <img src="logo.jpeg" alt="Shiny Detailer" class="footer-logo">
+    <p>© 2025 Shiny Detailer · Itajaí, SC</p>
+    <a href="https://wa.me/5547997478717" target="_blank" class="footer-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      (47) 9747-8717
+    </a>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/5547997478717" target="_blank" class="wa-fab" aria-label="WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>
