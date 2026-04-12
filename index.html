@@ -1,422 +1,1106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shiny Detailer – Car Detail</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Shiny Detailer - Estética Automotiva Premium em Itajaí, SC. Lavagem técnica, coating, higienização, polimento e muito mais.">
+  <title>Shiny Detailer | Estética Automotiva Premium</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="apple-touch-icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <a href="#home" class="nav-brand">
-    <img src="logo.jpeg" alt="Shiny Detailer">
+<!-- ======================== NAVBAR ======================== -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <img src="logo.png" alt="Shiny Detailer" class="nav-logo-img">
   </a>
-  <button id="burger" aria-label="Menu">
-    <span></span><span></span>
-  </button>
-  <ul id="nav-menu">
+  <ul class="nav-links">
+    <li><a href="#trabalhos">Trabalhos</a></li>
     <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#pacotes">Pacotes</a></li>
-    <li><a href="#galeria">Galeria</a></li>
-    <li><a href="#agendar" class="nav-btn">Agendar</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#localizacao">Localização</a></li>
   </ul>
+  <div class="nav-right">
+    <button class="btn-owner" onclick="openLoginModal()">🔐 Área do Proprietário</button>
+    <a href="#agendamento" class="nav-cta">Agendar →</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- HERO -->
-<section id="home" class="hero">
-  <div class="hero-img" style="background-image:url('img_ext1.jpeg')"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-body">
-    <span class="eyebrow">Car Detail · Itajaí, SC</span>
-    <h1>Seu carro.<br><em>Impecável.</em></h1>
-    <p>Detalhamento automotivo técnico e estético. Do básico ao premium.</p>
-    <div class="hero-btns">
-      <a href="#agendar" class="btn-main">Agendar agora</a>
-      <a href="#servicos" class="btn-line">Ver serviços</a>
-    </div>
-  </div>
-  <div class="hero-arrow">↓</div>
-</section>
+<!-- MENU MOBILE -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#trabalhos" onclick="closeMobile()">Trabalhos</a>
+  <a href="#servicos" onclick="closeMobile()">Serviços</a>
+  <a href="#sobre" onclick="closeMobile()">Sobre</a>
+  <a href="#localizacao" onclick="closeMobile()">Localização</a>
+  <button class="mobile-owner" onclick="closeMobile(); openLoginModal()">🔐 Área do Proprietário</button>
+  <a href="#agendamento" class="nav-cta" onclick="closeMobile()">Agendar Agora →</a>
+</div>
 
-<!-- SERVIÇOS -->
-<section id="servicos">
-  <div class="wrap">
-    <div class="sec-head fade-up">
-      <span class="tag">O que fazemos</span>
-      <h2>Serviços</h2>
+<!-- ======================== MODAL DE LOGIN ======================== -->
+<div class="modal-overlay" id="loginModal" onclick="closeLoginModal(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeLoginModal()">&times;</button>
+    <div class="modal-logo">
+      <img src="logo.png" alt="Shiny Detailer">
     </div>
-
-    <!-- Externo -->
-    <div class="cat-label fade-up">Tratamento Externo</div>
-    <div class="cards fade-up">
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_ext1.jpeg')">
-          <span class="card-price">a partir de R$120</span>
-        </div>
-        <div class="card-info">
-          <h3>Lavagem Técnica</h3>
-          <p>Lavagem interna e externa completa com aplicação de proteção na pintura.</p>
-          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica">Agendar →</a>
-        </div>
+    <h2 class="modal-title">Área do Proprietário</h2>
+    <p class="modal-subtitle">Acesso restrito. Faça login para continuar.</p>
+    <div class="modal-form">
+      <div class="form-group">
+        <label for="login-email">Usuário</label>
+        <input type="text" id="login-email" placeholder="gustavo" autocomplete="username">
       </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_extra2.jpeg')">
-          <span class="card-price">a partir de R$225</span>
-        </div>
-        <div class="card-info">
-          <h3>Lavagem Detalhada</h3>
-          <p>Máxima atenção a todos os detalhes do veículo, por dentro e por fora.</p>
-          <div class="price-row">
-            <span>Hatch R$225</span>
-            <span>Sedan R$235</span>
-            <span>SUV R$245</span>
+      <div class="form-group">
+        <label for="login-senha">Senha</label>
+        <input type="password" id="login-senha" placeholder="••••••••" autocomplete="current-password">
+      </div>
+      <p class="login-error" id="loginError"></p>
+      <button class="btn-login" id="btnLogin" onclick="handleLogin()">Entrar</button>
+    </div>
+    <p class="modal-footer-note">Acesso exclusivo para o proprietário do negócio.</p>
+  </div>
+</div>
+
+<!-- ======================== TOAST NOTIFICATION ======================== -->
+<div id="toast" class="toast"></div>
+
+<!-- ======================== PAINEL ADMIN — FIXO, SOBREPOSTO ======================== -->
+<div id="painel">
+  <div class="admin-sidebar-overlay" id="adminSidebarOverlay" onclick="closeSidebar()"></div>
+  <div class="admin-layout">
+
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-sidebar-logo">
+        <img src="logo.png" alt="Shiny Detailer" style="height:36px;">
+        <span>Admin</span>
+        <button class="admin-sidebar-close" onclick="closeSidebar()">✕</button>
+      </div>
+      <nav class="admin-nav">
+        <button class="admin-nav-btn active" onclick="adminTab('dashboard', this)">
+          <span>📊</span> Dashboard
+        </button>
+        <button class="admin-nav-btn" onclick="adminTab('agenda', this)">
+          <span>📅</span> Agenda <span class="admin-nav-badge" id="agendaBadge"></span>
+        </button>
+        <div class="admin-nav-group">Gestão</div>
+        <button class="admin-nav-btn" onclick="adminTab('clientes', this)">
+          <span>👥</span> Clientes
+        </button>
+        <button class="admin-nav-btn" onclick="adminTab('servicos', this)">
+          <span>✂️</span> Serviços
+        </button>
+        <button class="admin-nav-btn" onclick="adminTab('extras', this)">
+          <span>🛍️</span> Extras
+        </button>
+        <button class="admin-nav-btn" onclick="adminTab('estoque', this)">
+          <span>📦</span> Estoque
+        </button>
+        <button class="admin-nav-btn" onclick="adminTab('bloqueios', this)">
+          <span>🔒</span> Bloqueios
+        </button>
+        <div class="admin-nav-group">Financeiro</div>
+        <button class="admin-nav-btn" onclick="adminTab('financeiro', this)">
+          <span>💰</span> Financeiro
+        </button>
+      </nav>
+      <button class="admin-logout-btn" onclick="handleLogout()">⬅ Sair</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+
+      <!-- ── DASHBOARD ── -->
+      <div class="admin-panel active" id="panel-dashboard">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()" aria-label="Menu">☰</button>
+            <h1>Dashboard <span>📊</span></h1>
           </div>
-          <a href="#agendar" class="card-cta" data-service="Lavagem Detalhada">Agendar →</a>
+          <span id="dashboard-date"></span>
         </div>
-      </div>
-    </div>
-
-    <!-- Pintura -->
-    <div class="cat-label fade-up">Tratamento de Pintura</div>
-    <div class="cards fade-up">
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_polish.jpeg')">
-          <span class="card-price">a partir de R$50</span>
-        </div>
-        <div class="card-info">
-          <h3>Descontaminação de Vidros</h3>
-          <p>Remove manchas de chuva ácida que não saem na lavagem comum.</p>
-          <a href="#agendar" class="card-cta" data-service="Descontaminação de Vidros">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_extra1.jpeg')">
-          <span class="card-price">a partir de R$320</span>
-        </div>
-        <div class="card-info">
-          <h3>Enceramento Técnico</h3>
-          <p>Cera Blend All in One Vonixx na máquina. Brilho absurdo na pintura.</p>
-          <a href="#agendar" class="card-cta" data-service="Enceramento Técnico">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_polish.jpeg')">
-          <span class="card-price">a partir de R$650</span>
-        </div>
-        <div class="card-info">
-          <h3>Polimento Comercial</h3>
-          <p>Remove riscos superficiais e eleva o brilho da pintura.</p>
-          <a href="#agendar" class="card-cta" data-service="Polimento Comercial">Agendar →</a>
-        </div>
-      </div>
-      <div class="card card--blue">
-        <div class="card-img" style="background-image:url('img_extra3.jpeg')">
-          <span class="card-price">a partir de R$1.250</span>
-          <span class="card-badge">Premium</span>
-        </div>
-        <div class="card-info">
-          <h3>Polimento Técnico + Vitrificação</h3>
-          <p>Corrige até 90% dos riscos. Vitrificação com durabilidade de 1 a 3 anos.</p>
-          <a href="#agendar" class="card-cta" data-service="Polimento Técnico + Vitrificação">Agendar →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Interno -->
-    <div class="cat-label fade-up">Tratamento Interno</div>
-    <div class="cards fade-up">
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_int1.jpeg')">
-          <span class="card-price">a partir de R$350</span>
-        </div>
-        <div class="card-info">
-          <h3>Higienização de Bancos</h3>
-          <p>Remove manchas, ácaros e odores dos estofados de tecido ou couro.</p>
-          <a href="#agendar" class="card-cta" data-service="Higienização de Bancos">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_int2.jpeg')">
-          <span class="card-price">a partir de R$550</span>
-        </div>
-        <div class="card-info">
-          <h3>Higienização Completa</h3>
-          <p>Limpeza profunda de todo o interior: bancos, teto, tapetes e painel.</p>
-          <a href="#agendar" class="card-cta" data-service="Higienização Completa do Interior">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_int1.jpeg')">
-          <span class="card-price">a partir de R$150</span>
-        </div>
-        <div class="card-info">
-          <h3>Oxi-Sanitização</h3>
-          <p>Ozônio elimina bactérias, fungos, vírus e odores do interior.</p>
-          <a href="#agendar" class="card-cta" data-service="Oxi-Sanitização">Agendar →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Motor & Inferior -->
-    <div class="cat-label fade-up">Motor & Inferior</div>
-    <div class="cards fade-up">
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_motor.jpeg')">
-          <span class="card-price">a partir de R$200</span>
-        </div>
-        <div class="card-info">
-          <h3>Lavagem de Motor</h3>
-          <p>Remove óleo, poeira e resíduos sem danificar componentes elétricos.</p>
-          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica de Motor">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_motor.jpeg')">
-          <span class="card-price">a partir de R$250</span>
-        </div>
-        <div class="card-info">
-          <h3>Limpeza de Chassi</h3>
-          <p>Remove barro, graxa e sujeiras da parte inferior. Previne corrosão.</p>
-          <a href="#agendar" class="card-cta" data-service="Limpeza Técnica de Chassi">Agendar →</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Motos -->
-    <div class="cat-label fade-up">Motos</div>
-    <div class="cards fade-up">
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_moto.jpeg')">
-          <span class="card-price">a partir de R$70</span>
-        </div>
-        <div class="card-info">
-          <h3>Lavagem Técnica</h3>
-          <p>Limpeza completa sem danificar componentes sensíveis da moto.</p>
-          <a href="#agendar" class="card-cta" data-service="Lavagem Técnica – Moto">Agendar →</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="background-image:url('img_moto.jpeg')">
-          <span class="card-price">a partir de R$130</span>
-        </div>
-        <div class="card-info">
-          <h3>Lavagem Detalhada</h3>
-          <p>Limpeza minuciosa em áreas difíceis, realçando o acabamento da moto.</p>
-          <a href="#agendar" class="card-cta" data-service="Lavagem Detalhada – Moto">Agendar →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PACOTES -->
-<section id="pacotes" class="dark-sec">
-  <div class="wrap">
-    <div class="sec-head fade-up">
-      <span class="tag">Combos especiais</span>
-      <h2>Pacotes</h2>
-    </div>
-    <div class="pacotes fade-up">
-
-      <div class="pacote">
-        <div class="pac-num">01</div>
-        <div class="pac-img" style="background-image:url('img_ext1.jpeg')"></div>
-        <div class="pac-body">
-          <h3>Puro-Sangue</h3>
-          <p>Lavagem detalhada + enceramento técnico + cristalização do para-brisa. Proteção e brilho no dia a dia.</p>
-          <div class="pac-price">A partir de <strong>R$300</strong></div>
-          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Puro-Sangue">Agendar</a>
+        <div class="dash-cards" id="dashCards"></div>
+        <div class="dash-row">
+          <div class="dash-box" style="flex:2">
+            <div class="dash-box-title">Últimos Agendamentos</div>
+            <div id="dashRecentAgenda"></div>
+          </div>
+          <div class="dash-box" style="flex:1">
+            <div class="dash-box-title">Serviços Mais Pedidos</div>
+            <div id="dashTopServicos"></div>
+          </div>
         </div>
       </div>
 
-      <div class="pacote">
-        <div class="pac-num">02</div>
-        <div class="pac-img" style="background-image:url('img_int2.jpeg')"></div>
-        <div class="pac-body">
-          <h3>Higienização</h3>
-          <p>Higienização interna completa + limpeza detalhada. Interior limpo, sem odores, sensação de carro novo.</p>
-          <div class="pac-price">A partir de <strong>R$650</strong></div>
-          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Higienização">Agendar</a>
+      <!-- ── AGENDA ── -->
+      <div class="admin-panel" id="panel-agenda">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Agenda <span>📅</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-primary" onclick="openNovoAgendamento()">+ Agendamento</button>
+          </div>
         </div>
-      </div>
-
-      <div class="pacote pacote--dest">
-        <div class="pac-dest-label">Mais popular</div>
-        <div class="pac-num">03</div>
-        <div class="pac-img" style="background-image:url('img_extra3.jpeg')"></div>
-        <div class="pac-body">
-          <h3>Galo Cinza</h3>
-          <p>Higienização interna + enceramento técnico. Ideal para valorizar o carro na hora da venda.</p>
-          <div class="pac-price">A partir de <strong>R$700</strong></div>
-          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Galo Cinza">Agendar</a>
-        </div>
-      </div>
-
-      <div class="pacote">
-        <div class="pac-num">04</div>
-        <div class="pac-img" style="background-image:url('img_polish.jpeg')"></div>
-        <div class="pac-body">
-          <h3>Mustang</h3>
-          <p>Lavagem detalhada + polimento comercial + higienização + cristalização de vidros. Renovação total.</p>
-          <div class="pac-price">A partir de <strong>R$1.250</strong></div>
-          <a href="#agendar" class="btn-main btn-sm" data-service="Pacote Mustang">Agendar</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- GALERIA -->
-<section id="galeria">
-  <div class="wrap">
-    <div class="sec-head fade-up">
-      <span class="tag">Nosso trabalho</span>
-      <h2>Galeria</h2>
-    </div>
-  </div>
-  <div class="gallery fade-up">
-    <div class="g" style="background-image:url('img_ext1.jpeg')"></div>
-    <div class="g g-tall" style="background-image:url('img_acabamento.jpeg')"></div>
-    <div class="g" style="background-image:url('img_int2.jpeg')"></div>
-    <div class="g" style="background-image:url('img_moto.jpeg')"></div>
-    <div class="g g-wide" style="background-image:url('img_extra2.jpeg')"></div>
-    <div class="g" style="background-image:url('img_motor.jpeg')"></div>
-    <div class="g" style="background-image:url('img_polish.jpeg')"></div>
-    <div class="g" style="background-image:url('img_extra1.jpeg')"></div>
-    <div class="g" style="background-image:url('img_int1.jpeg')"></div>
-  </div>
-</section>
-
-<!-- AGENDAMENTO -->
-<section id="agendar" class="dark-sec">
-  <div class="wrap">
-    <div class="sec-head fade-up">
-      <span class="tag">Rápido e fácil</span>
-      <h2>Agendar</h2>
-      <p class="sec-sub">Preencha abaixo e confirme direto no WhatsApp.</p>
-    </div>
-    <div class="booking fade-up">
-      <div class="booking-form">
-        <div class="field">
-          <label>Serviço</label>
-          <select id="f-service">
-            <option value="">Selecione o serviço</option>
-            <optgroup label="Tratamento Externo">
-              <option>Lavagem Técnica</option>
-              <option>Lavagem Detalhada</option>
-            </optgroup>
-            <optgroup label="Tratamento de Pintura">
-              <option>Descontaminação de Vidros</option>
-              <option>Enceramento Técnico</option>
-              <option>Polimento Comercial</option>
-              <option>Polimento Técnico + Vitrificação</option>
-            </optgroup>
-            <optgroup label="Tratamento Interno">
-              <option>Higienização de Bancos</option>
-              <option>Higienização Completa do Interior</option>
-              <option>Oxi-Sanitização</option>
-            </optgroup>
-            <optgroup label="Motor & Inferior">
-              <option>Lavagem Técnica de Motor</option>
-              <option>Limpeza Técnica de Chassi</option>
-            </optgroup>
-            <optgroup label="Motos">
-              <option>Lavagem Técnica – Moto</option>
-              <option>Lavagem Detalhada – Moto</option>
-            </optgroup>
-            <optgroup label="Pacotes">
-              <option>Pacote Puro-Sangue</option>
-              <option>Pacote Higienização</option>
-              <option>Pacote Galo Cinza</option>
-              <option>Pacote Mustang</option>
-            </optgroup>
+        <div class="agenda-filters">
+          <input type="date" id="agendaFiltroData" onchange="renderAgenda()">
+          <select id="agendaFiltroStatus" onchange="renderAgenda()">
+            <option value="">Todos os status</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Confirmado">Confirmado</option>
+            <option value="Concluído">Concluído</option>
+            <option value="Cancelado">Cancelado</option>
           </select>
         </div>
-        <div class="field-row">
-          <div class="field">
-            <label>Data</label>
-            <input type="date" id="f-date">
+        <div class="admin-table-wrap" id="agendaContent"></div>
+        <!-- Modal Novo Agendamento -->
+        <div class="admin-modal-overlay" id="modalNovoAgendamento" onclick="if(event.target===this)closeNovoAgendamento()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3 id="novoAgModalTitle">Novo Agendamento</h3>
+              <button onclick="closeNovoAgendamento()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Nome *</label>
+                  <input type="text" id="ag-nome" placeholder="Nome do cliente">
+                </div>
+                <div class="admin-form-group">
+                  <label>Telefone *</label>
+                  <input type="tel" id="ag-tel" placeholder="(47) 9 0000-0000">
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Veículo</label>
+                  <input type="text" id="ag-veiculo" placeholder="Modelo e ano">
+                </div>
+                <div class="admin-form-group">
+                  <label>Serviço *</label>
+                  <select id="ag-servico"></select>
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Data *</label>
+                  <input type="date" id="ag-data" onchange="atualizarHorariosAdmin()">
+                </div>
+                <div class="admin-form-group">
+                  <label>Horário *</label>
+                  <select id="ag-horario">
+                    <option value="">Selecione a data primeiro</option>
+                  </select>
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Status</label>
+                <select id="ag-status">
+                  <option value="Pendente">Pendente</option>
+                  <option value="Confirmado">Confirmado</option>
+                  <option value="Concluído">Concluído</option>
+                  <option value="Cancelado">Cancelado</option>
+                </select>
+              </div>
+              <div class="admin-form-group">
+                <label>Observações</label>
+                <textarea id="ag-obs" rows="2" placeholder="Observações..."></textarea>
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovoAgendamento()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarAgendamento()">Salvar</button>
+            </div>
           </div>
-          <div class="field">
-            <label>Horário</label>
-            <select id="f-time">
-              <option value="">Selecione</option>
-              <option>08:00</option><option>09:00</option><option>10:00</option>
-              <option>11:00</option><option>13:00</option><option>14:00</option>
-              <option>15:00</option><option>16:00</option><option>17:00</option>
+        </div>
+      </div>
+
+      <!-- ── CLIENTES ── -->
+      <div class="admin-panel" id="panel-clientes">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Clientes <span>👥</span></h1>
+          </div>
+          <input type="text" id="clienteSearch" placeholder="🔍 Buscar cliente..." class="admin-search" oninput="renderClientes()">
+        </div>
+        <div class="admin-table-wrap" id="clientesContent"></div>
+      </div>
+
+      <!-- ── SERVIÇOS ── -->
+      <div class="admin-panel" id="panel-servicos">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Serviços <span>✂️</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-primary" onclick="openNovoServico()">+ Novo Serviço</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap" id="servicosAdminContent"></div>
+        <div class="admin-modal-overlay" id="modalNovoServico" onclick="if(event.target===this)closeNovoServico()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3 id="servicoModalTitle">Novo Serviço</h3>
+              <button onclick="closeNovoServico()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Nome do Serviço *</label>
+                  <input type="text" id="sv-nome" placeholder="Ex: Lavagem Técnica">
+                </div>
+                <div class="admin-form-group">
+                  <label>Categoria</label>
+                  <select id="sv-cat">
+                    <option value="externo">Externo</option>
+                    <option value="interno">Interno</option>
+                    <option value="vidros">Vidros</option>
+                    <option value="motor">Motor & Chassi</option>
+                    <option value="motos">Motos</option>
+                    <option value="acabamento">Acabamentos</option>
+                  </select>
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Preço base (R$) *</label>
+                  <input type="number" id="sv-preco" placeholder="120" min="0" step="0.01">
+                </div>
+                <div class="admin-form-group">
+                  <label>Duração estimada</label>
+                  <input type="text" id="sv-duracao" placeholder="Ex: 2h, 1h 30min">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Ícone (emoji)</label>
+                <input type="text" id="sv-icone" placeholder="🚿" maxlength="4">
+              </div>
+              <div class="admin-form-group">
+                <label>Descrição</label>
+                <textarea id="sv-desc" rows="2" placeholder="Descreva o serviço..."></textarea>
+              </div>
+              <div class="admin-form-group" style="display:flex;align-items:center;gap:10px;">
+                <input type="checkbox" id="sv-ativo" checked style="width:16px;height:16px;">
+                <label for="sv-ativo" style="margin:0;text-transform:none;letter-spacing:0;font-size:14px;color:rgba(255,255,255,0.7)">Serviço ativo (visível no site)</label>
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovoServico()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarServico()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── EXTRAS ── -->
+      <div class="admin-panel" id="panel-extras">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Extras <span>🛍️</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-primary" onclick="openNovoExtra()">+ Novo Extra</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap" id="extrasContent"></div>
+        <div class="admin-modal-overlay" id="modalNovoExtra" onclick="if(event.target===this)closeNovoExtra()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3>Novo Extra</h3>
+              <button onclick="closeNovoExtra()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Nome *</label>
+                  <input type="text" id="ex-nome" placeholder="Ex: Aromatizante">
+                </div>
+                <div class="admin-form-group">
+                  <label>Preço (R$) *</label>
+                  <input type="number" id="ex-preco" placeholder="30" min="0" step="0.01">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Descrição</label>
+                <textarea id="ex-desc" rows="2" placeholder="Descrição do extra..."></textarea>
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovoExtra()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarExtra()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ESTOQUE ── -->
+      <div class="admin-panel" id="panel-estoque">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Estoque <span>📦</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-primary" onclick="openNovoProduto()">+ Novo Produto</button>
+          </div>
+        </div>
+        <div class="admin-table-wrap" id="estoqueContent"></div>
+        <div class="admin-modal-overlay" id="modalNovoProduto" onclick="if(event.target===this)closeNovoProduto()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3 id="produtoModalTitle">Novo Produto</h3>
+              <button onclick="closeNovoProduto()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Produto *</label>
+                  <input type="text" id="pr-nome" placeholder="Ex: Shampoo Automotivo">
+                </div>
+                <div class="admin-form-group">
+                  <label>Categoria</label>
+                  <input type="text" id="pr-cat" placeholder="Ex: Limpeza">
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Quantidade atual</label>
+                  <input type="number" id="pr-qtd" placeholder="0" min="0">
+                </div>
+                <div class="admin-form-group">
+                  <label>Estoque mínimo</label>
+                  <input type="number" id="pr-min" placeholder="2" min="0">
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Unidade</label>
+                  <input type="text" id="pr-unidade" placeholder="Ex: litro, unid">
+                </div>
+                <div class="admin-form-group">
+                  <label>Custo unitário (R$)</label>
+                  <input type="number" id="pr-custo" placeholder="0.00" min="0" step="0.01">
+                </div>
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovoProduto()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarProduto()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── BLOQUEIOS ── -->
+      <div class="admin-panel" id="panel-bloqueios">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Bloqueios <span>🔒</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-primary" onclick="openNovoBloqueio()">+ Bloquear Horário</button>
+          </div>
+        </div>
+        <p style="color:rgba(255,255,255,0.4);font-size:14px;margin-bottom:16px;">Bloqueie datas ou horários para impedir agendamentos nesse período.</p>
+        <div class="admin-table-wrap" id="bloqueiosContent"></div>
+        <div class="admin-modal-overlay" id="modalNovoBloqueio" onclick="if(event.target===this)closeNovoBloqueio()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3>Bloquear Período</h3>
+              <button onclick="closeNovoBloqueio()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Data início *</label>
+                  <input type="date" id="bl-inicio">
+                </div>
+                <div class="admin-form-group">
+                  <label>Data fim</label>
+                  <input type="date" id="bl-fim">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Motivo</label>
+                <input type="text" id="bl-motivo" placeholder="Ex: Férias, Manutenção...">
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovoBloqueio()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarBloqueio()">Bloquear</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── FINANCEIRO ── -->
+      <div class="admin-panel" id="panel-financeiro">
+        <div class="admin-topbar">
+          <div class="admin-topbar-left">
+            <button class="admin-menu-toggle" onclick="openSidebar()">☰</button>
+            <h1>Financeiro <span>💰</span></h1>
+          </div>
+          <div class="admin-topbar-actions">
+            <button class="admin-btn-secondary" onclick="openNovaDespesa()">+ Despesa</button>
+            <button class="admin-btn-primary" onclick="openNovaReceita()">+ Receita</button>
+          </div>
+        </div>
+        <div class="fin-filters">
+          <select id="finPeriodo" onchange="renderFinanceiro()">
+            <option value="mes">Este mês</option>
+            <option value="semana">Esta semana</option>
+            <option value="todos">Todos</option>
+          </select>
+          <select id="finTipo" onchange="renderFinanceiro()">
+            <option value="">Tudo</option>
+            <option value="receita">Receitas</option>
+            <option value="despesa">Despesas</option>
+          </select>
+        </div>
+        <div class="fin-cards" id="finCards"></div>
+        <div class="fin-chart-box">
+          <div class="dash-box-title">Receitas vs Despesas (últimos 6 meses)</div>
+          <div id="finChart" style="padding:16px 0;"></div>
+        </div>
+        <div class="dash-box" style="margin-top:20px;">
+          <div class="dash-box-title">Lançamentos</div>
+          <div class="admin-table-wrap" id="finLancamentos"></div>
+        </div>
+
+        <!-- Modal Despesa -->
+        <div class="admin-modal-overlay" id="modalNovaDespesa" onclick="if(event.target===this)closeNovaDespesa()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3>Nova Despesa</h3>
+              <button onclick="closeNovaDespesa()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Descrição *</label>
+                  <input type="text" id="desp-desc" placeholder="Ex: Shampoo automotivo">
+                </div>
+                <div class="admin-form-group">
+                  <label>Valor (R$) *</label>
+                  <input type="number" id="desp-valor" placeholder="0.00" min="0" step="0.01">
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Categoria</label>
+                  <select id="desp-cat">
+                    <option>Produtos</option>
+                    <option>Equipamentos</option>
+                    <option>Aluguel</option>
+                    <option>Água/Luz</option>
+                    <option>Pessoal</option>
+                    <option>Marketing</option>
+                    <option>Outros</option>
+                  </select>
+                </div>
+                <div class="admin-form-group">
+                  <label>Data</label>
+                  <input type="date" id="desp-data">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Observação</label>
+                <input type="text" id="desp-obs" placeholder="Observação...">
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovaDespesa()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarDespesa()">Salvar Despesa</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Receita Manual -->
+        <div class="admin-modal-overlay" id="modalNovaReceita" onclick="if(event.target===this)closeNovaReceita()">
+          <div class="admin-modal">
+            <div class="admin-modal-header">
+              <h3>Nova Receita</h3>
+              <button onclick="closeNovaReceita()" style="background:none;border:none;color:rgba(255,255,255,0.5);font-size:22px;cursor:pointer;">&times;</button>
+            </div>
+            <div class="admin-modal-body">
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Descrição *</label>
+                  <input type="text" id="rec-desc" placeholder="Ex: Serviço avulso">
+                </div>
+                <div class="admin-form-group">
+                  <label>Valor (R$) *</label>
+                  <input type="number" id="rec-valor" placeholder="0.00" min="0" step="0.01">
+                </div>
+              </div>
+              <div class="admin-form-row">
+                <div class="admin-form-group">
+                  <label>Cliente</label>
+                  <input type="text" id="rec-cliente" placeholder="Nome do cliente">
+                </div>
+                <div class="admin-form-group">
+                  <label>Data</label>
+                  <input type="date" id="rec-data">
+                </div>
+              </div>
+              <div class="admin-form-group">
+                <label>Forma de pagamento</label>
+                <select id="rec-pagamento">
+                  <option>Pix</option>
+                  <option>Dinheiro</option>
+                  <option>Cartão de Débito</option>
+                  <option>Cartão de Crédito</option>
+                </select>
+              </div>
+            </div>
+            <div class="admin-modal-footer">
+              <button class="admin-btn-secondary" onclick="closeNovaReceita()">Cancelar</button>
+              <button class="admin-btn-primary" onclick="salvarReceita()">Salvar Receita</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div><!-- /painel -->
+
+<!-- ======================== HERO ======================== -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content container">
+    <div class="hero-text">
+      <div class="hero-badge">Estética Automotiva Premium · Itajaí, SC</div>
+      <h1>Seu veículo merece<br><span>cuidado premium</span></h1>
+      <p class="hero-desc">Detailing profissional com produtos de alta performance. Lavagem técnica, coating, polimento e higienização para carros, motos e caminhões.</p>
+      <div class="hero-actions">
+        <a href="#agendamento" class="btn-primary">Agendar Agora <span>→</span></a>
+        <a href="#servicos" class="btn-secondary">Ver Serviços</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">150<span>+</span></div>
+          <div class="stat-label">Veículos atendidos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span>★</span></div>
+          <div class="stat-label">Avaliação média</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2<span>+</span></div>
+          <div class="stat-label">Anos de experiência</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-wrap">
+        <img src="trabalho_1.jpeg" alt="Porsche 911 - Shiny Detailer"
+             onerror="this.style.background='linear-gradient(135deg,#1e3a5f,#0f172a)';this.removeAttribute('src')" style="object-fit:cover;object-position:center center;">
+      </div>
+      <div class="hero-img-badge">
+        <div class="badge-text">Resultado real</div>
+        <div class="badge-value">Detailing Premium</div>
+        <div class="badge-sub">✓ Finalizado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FAIXA DE BANNERS ======================== -->
+<section class="banner-strip">
+  <div class="container">
+    <div class="banner-strip-grid">
+      <div class="banner-strip-item">
+        <img src="banner_serviço.jpeg" alt="Lavagem Técnica" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="banner-strip-overlay"><span>Lavagem Técnica</span></div>
+      </div>
+      <div class="banner-strip-item">
+        <img src="banner_serviço+.jpeg" alt="Serviço Premium" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="banner-strip-overlay"><span>Serviço Premium</span></div>
+      </div>
+      <div class="banner-strip-item">
+        <img src="banner_serviço2.jpeg" alt="Higienização" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="banner-strip-overlay"><span>Higienização</span></div>
+      </div>
+      <div class="banner-strip-item">
+        <img src="banner_serviço3.jpeg" alt="Coating" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="banner-strip-overlay"><span>Coating Cerâmico</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== GALERIA ======================== -->
+<section id="trabalhos">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-badge">📸 Nossos Trabalhos</div>
+      <h2 class="section-title" style="color:white">Resultados que <span style="color:#3b82f6">falam</span> por si</h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.55)">Cada veículo tratado com atenção aos mínimos detalhes.</p>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item gallery-featured">
+        <img src="baneerdoege.jpeg" alt="Detailing Completo" onerror="this.style.background='#1a3a5c';this.removeAttribute('src')" style="object-fit:cover;object-position:center top;">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Detailing Completo</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_3.jpeg" alt="Polimento" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Polimento</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_4.jpeg" alt="Interior" onerror="this.style.background='#1a2744';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Interior</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_5.jpeg" alt="Lavagem Técnica" onerror="this.style.background='#172133';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Lavagem Técnica</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_6.jpeg" alt="Higienização" onerror="this.style.background='#243040';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Higienização</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_7.jpeg" alt="Coating" onerror="this.style.background='#1c2b3a';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Coating</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_8.jpeg" alt="Detalhamento" onerror="this.style.background='#1a3a5c';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Detalhamento</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_9.jpeg" alt="Moto" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Moto</span></div>
+      </div>
+      <div class="gallery-item">
+        <img src="trabalho_10.jpeg" alt="Resultado Final" onerror="this.style.background='#172133';this.removeAttribute('src')">
+        <div class="gallery-item-overlay"><span class="gallery-item-label">Resultado Final</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SERVIÇOS ======================== -->
+<section id="servicos">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-badge">🔧 Serviços</div>
+      <h2 class="section-title">Tudo que seu veículo <span>precisa</span></h2>
+      <p class="section-desc">Serviços especializados para manter seu veículo impecável, protegido e com visual de showroom.</p>
+    </div>
+    <div class="servico-banners reveal">
+      <div class="servico-banner-card">
+        <img src="banner4.jpeg" alt="Lavagem e Polimento" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="servico-banner-info"><strong>Lavagem & Polimento</strong><span>A partir de R$ 120</span></div>
+      </div>
+      <div class="servico-banner-card">
+        <img src="bannerf250.jpeg" alt="Caminhonetes e SUVs" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="servico-banner-info"><strong>Caminhonetes & SUVs</strong><span>A partir de R$ 200</span></div>
+      </div>
+      <div class="servico-banner-card">
+        <img src="bannergolf.jpeg" alt="Hatch e Sedan" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="servico-banner-info"><strong>Hatch & Sedan</strong><span>A partir de R$ 120</span></div>
+      </div>
+      <div class="servico-banner-card">
+        <img src="bannerinterno.jpeg" alt="Higienização Interna" onerror="this.style.background='#1e293b';this.removeAttribute('src')">
+        <div class="servico-banner-info"><strong>Higienização Interna</strong><span>A partir de R$ 350</span></div>
+      </div>
+    </div>
+    <div class="services-tabs reveal">
+      <button class="tab-btn active" onclick="filterServices('todos', this)">Todos</button>
+      <button class="tab-btn" onclick="filterServices('externo', this)">Externo</button>
+      <button class="tab-btn" onclick="filterServices('interno', this)">Interno</button>
+      <button class="tab-btn" onclick="filterServices('vidros', this)">Vidros</button>
+      <button class="tab-btn" onclick="filterServices('motor', this)">Motor & Chassi</button>
+      <button class="tab-btn" onclick="filterServices('motos', this)">Motos</button>
+      <button class="tab-btn" onclick="filterServices('acabamento', this)">Acabamentos</button>
+    </div>
+    <div class="services-grid" id="servicesGrid">
+      <div class="service-card reveal" data-cat="externo">
+        <div class="service-icon">🚿</div>
+        <div class="service-name">Lavagem Técnica</div>
+        <div class="service-desc">Lavagem interna e externa completa, com aplicação de proteção externa.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 120</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="externo">
+        <div class="service-icon">✨</div>
+        <div class="service-name">Lavagem Detalhada</div>
+        <div class="service-desc">Lavagem interna e externa com máxima atenção a todos os detalhes do veículo.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 225+</div><div class="price-label">Hatch/Sedan/SUV</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="interno">
+        <div class="service-icon">🧼</div>
+        <div class="service-name">Higienização Completa</div>
+        <div class="service-desc">Limpeza profunda de todo o interior, removendo sujeiras, manchas, odores e microrganismos.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 550</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="interno">
+        <div class="service-icon">🪑</div>
+        <div class="service-name">Hig. Bancos de Tecido</div>
+        <div class="service-desc">Remove manchas, ácaros, odores e sujeiras impregnadas, renovando o aspecto dos estofados.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 350</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="interno">
+        <div class="service-icon">🛋️</div>
+        <div class="service-name">Hig. Bancos de Couro</div>
+        <div class="service-desc">Limpeza profunda, hidratação e proteção do couro, prevenindo ressecamento e rachaduras.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 400</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="vidros">
+        <div class="service-icon">🪟</div>
+        <div class="service-name">Cristalização de Vidros</div>
+        <div class="service-desc">Aplicação de película protetora que repele água e melhora a visibilidade.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 180</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="externo">
+        <div class="service-icon">💎</div>
+        <div class="service-name">Coating Cerâmico</div>
+        <div class="service-desc">Proteção de longa duração com brilho intenso e resistência a agentes externos.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 1.200</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="externo">
+        <div class="service-icon">🔆</div>
+        <div class="service-name">Polimento</div>
+        <div class="service-desc">Correção de pintura com remoção de riscos finos, oxidação e hologramas.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 600</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="motor">
+        <div class="service-icon">⚙️</div>
+        <div class="service-name">Higienização de Motor</div>
+        <div class="service-desc">Limpeza cuidadosa do compartimento do motor, removendo graxas e sujeiras.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 220</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="motos">
+        <div class="service-icon">🏍️</div>
+        <div class="service-name">Lavagem de Moto</div>
+        <div class="service-desc">Lavagem completa com atenção a todos os detalhes da motocicleta.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 80</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="acabamento">
+        <div class="service-icon">🔩</div>
+        <div class="service-name">Restauração de Plásticos</div>
+        <div class="service-desc">Revitalização dos plásticos externos, devolvendo a cor e o brilho originais.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 150</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+      <div class="service-card reveal" data-cat="acabamento">
+        <div class="service-icon">🪄</div>
+        <div class="service-name">Restauração de Faróis</div>
+        <div class="service-desc">Clareia e protege os faróis amarelados, melhorando a estética e a segurança.</div>
+        <div class="service-price">
+          <div><div class="price-tag">R$ 120</div><div class="price-label">a partir de</div></div>
+          <a href="#agendamento" class="service-btn">Agendar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== SOBRE ======================== -->
+<section id="sobre">
+  <div class="container">
+    <div class="about-grid reveal">
+      <div class="about-imgs">
+        <div class="about-img-main">
+          <img src="bannerf250.jpeg" alt="Shiny Detailer - Trabalhos" onerror="this.style.background='linear-gradient(135deg,#1e3a5f,#0f172a)';this.removeAttribute('src')">
+        </div>
+        <div class="about-img-secondary">
+          <img src="trabalho_9.jpeg" alt="Moto - Shiny Detailer" onerror="this.style.background='linear-gradient(135deg,#0f172a,#1a3a5c)';this.removeAttribute('src')">
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-badge">🏆 Sobre Nós</div>
+        <h2 class="section-title">Paixão por <span>perfeição</span></h2>
+        <p class="section-desc" style="margin-bottom:32px">
+          A Shiny Detailer nasceu da paixão por carros e pelo trabalho bem feito. Somos especializados em estética automotiva de alto padrão, atendendo veículos de todos os perfis com dedicação e produtos profissionais de primeira linha.
+        </p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-num">150<span>+</span></div>
+            <div class="about-stat-label">Veículos atendidos</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">2<span>+</span></div>
+            <div class="about-stat-label">Anos de experiência</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">5<span>★</span></div>
+            <div class="about-stat-label">Avaliação média</div>
+          </div>
+        </div>
+        <div class="about-features">
+          <div class="feature-item">✅ Produtos profissionais importados</div>
+          <div class="feature-item">✅ Atendimento personalizado</div>
+          <div class="feature-item">✅ Compromisso com qualidade</div>
+          <div class="feature-item">✅ Garantia nos serviços</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== AGENDAMENTO ======================== -->
+<section id="agendamento" style="background:var(--dark)">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div class="section-badge" style="background:rgba(59,130,246,0.2);color:#93c5fd">📅 Agendamento</div>
+      <h2 class="section-title" style="color:white">Agende seu <span style="color:#3b82f6">serviço</span></h2>
+      <p class="section-desc" style="color:rgba(255,255,255,0.55);margin:0 auto">
+        Preencha o formulário e vamos confirmar pelo WhatsApp.
+      </p>
+    </div>
+    <div class="booking-wrap reveal">
+      <div class="step-dots">
+        <div class="step-dot active" id="dot1"><span>1</span><label>Dados</label></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="dot2"><span>2</span><label>Serviço</label></div>
+        <div class="step-line"></div>
+        <div class="step-dot" id="dot3"><span>3</span><label>Confirmar</label></div>
+      </div>
+      <!-- Step 1 -->
+      <div class="form-step active" id="step1">
+        <h3>Seus dados</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome completo *</label>
+            <input type="text" id="nome" placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label>Telefone / WhatsApp *</label>
+            <input type="tel" id="telefone" placeholder="(47) 9 0000-0000">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Veículo (modelo e ano)</label>
+          <input type="text" id="veiculo" placeholder="Ex: Honda Civic 2022">
+        </div>
+        <button class="btn-step" onclick="nextStep(2)">Próximo →</button>
+      </div>
+      <!-- Step 2 -->
+      <div class="form-step" id="step2">
+        <h3>Escolha o serviço</h3>
+        <div class="form-group">
+          <label>Serviço desejado *</label>
+          <select id="servico">
+            <option value="">Selecione um serviço</option>
+            <option>Lavagem Técnica — R$ 120+</option>
+            <option>Lavagem Detalhada — R$ 225+</option>
+            <option>Higienização Completa — R$ 550+</option>
+            <option>Higienização Bancos de Tecido — R$ 350+</option>
+            <option>Higienização Bancos de Couro — R$ 400+</option>
+            <option>Cristalização de Vidros — R$ 180+</option>
+            <option>Coating Cerâmico — R$ 1.200+</option>
+            <option>Polimento — R$ 600+</option>
+            <option>Higienização de Motor — R$ 220+</option>
+            <option>Lavagem de Moto — R$ 80+</option>
+            <option>Restauração de Plásticos — R$ 150+</option>
+            <option>Restauração de Faróis — R$ 120+</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Data desejada *</label>
+            <input type="date" id="data" onchange="atualizarHorariosPublico()">
+          </div>
+          <div class="form-group">
+            <label>Horário desejado *</label>
+            <select id="horario">
+              <option value="">Selecione a data primeiro</option>
             </select>
           </div>
         </div>
-        <div class="field">
-          <label>Tipo de veículo</label>
-          <select id="f-vehicle">
-            <option value="">Selecione</option>
-            <option>Hatch</option><option>Sedan</option><option>SUV</option>
-            <option>Moto</option><option>Outro</option>
-          </select>
+        <div class="form-group">
+          <label>Observações</label>
+          <textarea id="obs" rows="3" placeholder="Alguma informação adicional..."></textarea>
         </div>
-        <div class="field">
-          <label>Observações <small>(opcional)</small></label>
-          <textarea id="f-obs" placeholder="Ex: couro no interior, cor especial..."></textarea>
+        <div class="form-btn-row">
+          <button class="btn-step outline" onclick="nextStep(1)">← Voltar</button>
+          <button class="btn-step" onclick="nextStep(3)">Próximo →</button>
         </div>
-        <button class="btn-wa" onclick="enviarWA()">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Confirmar via WhatsApp
-        </button>
       </div>
-      <div class="booking-aside">
-        <div class="aside-card">
-          <span class="aside-icon">📍</span>
-          <div>
-            <strong>Localização</strong>
-            <p>Itajaí, SC</p>
-          </div>
+      <!-- Step 3 -->
+      <div class="form-step" id="step3">
+        <h3>Confirmar agendamento</h3>
+        <div class="summary-box">
+          <div class="summary-row"><span>Nome</span><strong id="s-nome"></strong></div>
+          <div class="summary-row"><span>Veículo</span><strong id="s-veiculo"></strong></div>
+          <div class="summary-row"><span>Serviço</span><strong id="s-servico"></strong></div>
         </div>
-        <div class="aside-card">
-          <span class="aside-icon">⏰</span>
-          <div>
-            <strong>Atendimento</strong>
-            <p>Seg–Sáb · 08h às 18h</p>
-          </div>
+        <div class="form-btn-row">
+          <button class="btn-step outline" onclick="nextStep(2)">← Voltar</button>
+          <a id="waBtn" href="#" target="_blank" class="btn-wa" onclick="return buildWA()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Confirmar via WhatsApp
+          </a>
         </div>
-        <div class="aside-card">
-          <span class="aside-icon">📱</span>
-          <div>
-            <strong>WhatsApp</strong>
-            <p>(47) 9747-8717</p>
-          </div>
-        </div>
-        <a href="https://wa.me/5547997478717" target="_blank" class="btn-wa-outline">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Falar no WhatsApp
-        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ======================== LOCALIZAÇÃO ======================== -->
+<section id="localizacao">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:48px">
+      <div class="section-badge">📍 Localização</div>
+      <h2 class="section-title">Onde nos <span>encontrar</span></h2>
+    </div>
+    <div class="location-grid reveal">
+      <div class="location-info">
+        <div class="location-card">
+          <div class="loc-icon">📍</div>
+          <div>
+            <strong>Endereço</strong>
+            <p>Rua Antônio Manoel Correia, 451<br>Itajaí – SC</p>
+          </div>
+        </div>
+        <div class="location-card">
+          <div class="loc-icon">📱</div>
+          <div>
+            <strong>WhatsApp</strong>
+            <p><a href="https://wa.me/5547997478717?text=Olá! Vi o site e quero saber mais." target="_blank">(47) 9 9747-8717</a></p>
+          </div>
+        </div>
+        <!-- ✅ HORÁRIO CORRIGIDO -->
+        <div class="location-card">
+          <div class="loc-icon">🕐</div>
+          <div>
+            <strong>Horário de atendimento</strong>
+            <p>Seg – Sex: 13h às 19h<br>Sáb: 08h às 18h30</p>
+          </div>
+        </div>
+        <a href="https://wa.me/5547997478717?text=Olá! Vi o site e quero saber mais sobre os serviços da Shiny Detailer." target="_blank" class="btn-primary">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3574.5!2d-48.662!3d-26.908!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zUnVhIEFudMO0bmlvIE1hbm9lbCBDb3JyZWlhLCA0NTEsIEl0YWphw60!5e0!3m2!1spt!2sbr!4v1"
+          width="100%" height="380" style="border:0;border-radius:16px;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================== FOOTER ======================== -->
 <footer>
-  <div class="wrap footer-inner">
-    <img src="logo.jpeg" alt="Shiny Detailer" class="footer-logo">
-    <p>© 2025 Shiny Detailer · Itajaí, SC</p>
-    <a href="https://wa.me/5547997478717" target="_blank" class="footer-wa">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      (47) 9747-8717
-    </a>
+  <div class="footer-top container">
+    <div class="footer-brand">
+      <img src="logo.png" alt="Shiny Detailer" class="footer-logo">
+      <p>Estética automotiva premium em Itajaí, SC.<br>Seu veículo merece o melhor cuidado.</p>
+      <div class="footer-socials">
+        <a href="https://wa.me/5547997478717" target="_blank" class="social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://instagram.com/shinydetailer" target="_blank" class="social-btn" aria-label="Instagram">📸</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Navegação</h4>
+      <a href="#trabalhos">Nossos Trabalhos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#sobre">Sobre nós</a>
+      <a href="#agendamento">Agendamento</a>
+      <a href="#localizacao">Localização</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Contato</h4>
+      <p>📍 Rua Antônio Manoel Correia, 451 – Itajaí, SC</p>
+      <p>📱 <a href="https://wa.me/5547997478717">(47) 9 9747-8717</a></p>
+      <!-- ✅ HORÁRIO CORRIGIDO NO FOOTER -->
+      <p>🕐 Seg–Sex: 13h–19h | Sáb: 08h–18h30</p>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <!-- ✅ ANO CORRIGIDO -->
+    <span>© 2026 Shiny Detailer. Todos os direitos reservados.</span>
   </div>
 </footer>
 
-<!-- WA FLOAT -->
-<a href="https://wa.me/5547997478717" target="_blank" class="wa-fab" aria-label="WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5547997478717?text=Olá! Vi o site e quero saber mais sobre os serviços da Shiny Detailer." target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+  <div class="whatsapp-tooltip">Falar agora</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
+<!-- VOLTAR AO TOPO -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Voltar ao topo">▲</button>
+
 <script src="script.js"></script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
+  import { getFirestore, addDoc, collection } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC3ip4rScxcGBuTKevrdDDn8ZPtQPgQWsc",
+    authDomain: "shiny-detail.firebaseapp.com",
+    projectId: "shiny-detail",
+    storageBucket: "shiny-detail.firebasestorage.app",
+    messagingSenderId: "581720920861",
+    appId: "1:581720920861:web:f51a07c411449a8c0987f4",
+    measurementId: "G-RE506FVLS7"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  // TESTE
+  async function testarFirebase() {
+    await addDoc(collection(db, "test"), {
+      nome: "Daniel",
+      status: "Conectado 🔥"
+    });
+    console.log("FIREBASE OK");
+  }
+
+  testarFirebase();
+</script>
 </body>
 </html>
