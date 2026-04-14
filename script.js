@@ -1,3 +1,22 @@
+// ── THEME TOGGLE ──
+(function() {
+  const root = document.documentElement;
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    root.setAttribute('data-theme', saved);
+  }
+  // Both desktop and mobile toggles
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.theme-toggle');
+    if (!btn) return;
+    const current = root.getAttribute('data-theme');
+    const isDark = current === 'dark' || (!current && !window.matchMedia('(prefers-color-scheme: light)').matches);
+    const next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+})();
+
 // ── NAV SOLID ON SCROLL ──
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {

@@ -10,6 +10,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Apply saved theme immediately to prevent flash of wrong theme
+    (function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+  </script>
 </head>
 <body>
 
@@ -25,6 +29,10 @@
     <li><a href="#localizacao">Localização</a></li>
   </ul>
   <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema claro/escuro">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon">🌙</span>
+    </button>
     <button class="btn-owner" onclick="openLoginModal()">🔐 Área do Proprietário</button>
     <a href="#agendamento" class="nav-cta">Agendar →</a>
   </div>
@@ -40,6 +48,10 @@
   <a href="#sobre" onclick="closeMobile()">Sobre</a>
   <a href="#localizacao" onclick="closeMobile()">Localização</a>
   <button class="mobile-owner" onclick="closeMobile(); openLoginModal()">🔐 Área do Proprietário</button>
+  <button class="theme-toggle" id="themeToggleMobile" aria-label="Alternar tema claro/escuro" style="align-self:center;margin:8px 0;">
+    <span class="icon-sun">☀️</span>
+    <span class="icon-moon">🌙</span>
+  </button>
   <a href="#agendamento" class="nav-cta" onclick="closeMobile()">Agendar Agora →</a>
 </div>
 
