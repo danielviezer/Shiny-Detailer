@@ -21,7 +21,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/corvette_de_frente.jpg"
-          alt="Corvette Shiny Detailer"
+          alt="Corvette Shiny Car Studio"
           fill
           priority
           className="object-cover object-center"

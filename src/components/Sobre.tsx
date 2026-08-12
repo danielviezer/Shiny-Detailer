@@ -20,7 +20,7 @@ export default function Sobre() {
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
               <Image
                 src="/images/corvette_de_costas.jpg"
-                alt="Shiny Detailer trabalho"
+                alt="Shiny Car Studio trabalho"
                 fill
                 className="object-cover"
               />
@@ -61,7 +61,7 @@ export default function Sobre() {
 
             <div className="space-y-4 text-[#8898B3] font-light leading-relaxed mb-8">
               <p>
-                A Shiny Detailer nasceu da obsessão por detalhes.
+                A Shiny Car Studio nasceu da obsessão por detalhes.
                 Cada serviço é executado com atenção cirúrgica,
                 produtos de última geração e técnicas aprendidas
                 com os melhores profissionais do setor.

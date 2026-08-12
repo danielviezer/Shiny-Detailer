@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Shiny Detailer | Detalhamento Automotivo Premium',
+  title: 'Shiny Car Studio | Detalhamento Automotivo Premium',
   description: 'Detalhamento automotivo premium em Itajaí. Tratamento interno, externo, polimento e proteção para veículos de luxo.',
   keywords: 'detailing, detalhamento, polimento, ppf, ceramic, proteção, Itajaí, Santa Catarina',
   openGraph: {
-    title: 'Shiny Detailer | Detalhamento Automotivo Premium',
+    title: 'Shiny Car Studio | Detalhamento Automotivo Premium',
     description: 'Detalhamento automotivo premium em Itajaí.',
     type: 'website',
   },

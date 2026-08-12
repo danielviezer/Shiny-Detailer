@@ -123,7 +123,7 @@ const services: Record<string, Servico[]> = {
     },
     {
       nome: 'Puro-Sangue',
-      desc: 'O pacote inicial da Shiny Detailer reúne os cuidados essenciais para elevar o padrão do seu veículo: lavagem detalhada, Coating de 12 meses e cristalização do para-brisa. Um conjunto de serviços pensado para limpar profundamente, proteger a pintura e melhorar a visibilidade, entregando mais estética, proteção e segurança no dia a dia.',
+      desc: 'O pacote inicial da Shiny Car Studio reúne os cuidados essenciais para elevar o padrão do seu veículo: lavagem detalhada, Coating de 12 meses e cristalização do para-brisa. Um conjunto de serviços pensado para limpar profundamente, proteger a pintura e melhorar a visibilidade, entregando mais estética, proteção e segurança no dia a dia.',
       preco: 'A partir de R$450',
       indicado: [
         'Quem quer manter o carro sempre limpo, protegido e com aparência de bem cuidado no dia a dia.',

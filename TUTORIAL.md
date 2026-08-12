@@ -1,4 +1,4 @@
-# 📖 Tutorial Completo — Shiny Detailer
+# 📖 Tutorial Completo — Shiny Car Studio
 ### Como editar, atualizar e publicar o site
 
 ---
@@ -53,7 +53,7 @@ Arquivo: `src/app/layout.tsx`
 
 ```tsx
 // Procure estas linhas e edite:
-title: 'Shiny Detailer | Detalhamento Automotivo Premium',
+title: 'Shiny Car Studio | Detalhamento Automotivo Premium',
 description: 'Detalhamento automotivo premium em Itajaí...',
 ```
 
@@ -217,7 +217,7 @@ No terminal do VS Code:
 ```bash
 git init
 git add .
-git commit -m "Shiny Detailer - versão inicial"
+git commit -m "Shiny Car Studio - versão inicial"
 ```
 
 Depois vá em [github.com/new](https://github.com/new), crie um repositório chamado `shiny-detailer` e copie o comando que o GitHub mostrar, parecido com:

@@ -40,10 +40,10 @@ export default function Navbar() {
           {/* Logo */}
           <button onClick={() => handleNav('#hero')} className="flex items-center gap-2 z-10">
             <div className="relative w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden ring-1 ring-[#00B4FF]/30">
-              <Image src="/images/logo_shiny.jpg" alt="Shiny Detailer" fill className="object-cover" />
+              <Image src="/images/logo_shiny.jpg" alt="Shiny Car Studio" fill className="object-cover" />
             </div>
             <span className="font-display text-xl md:text-2xl tracking-widest text-white">
-              SHINY <span className="text-[#00B4FF]">DETAILER</span>
+              SHINY <span className="text-[#00B4FF]">CAR STUDIO</span>
             </span>
           </button>
 
